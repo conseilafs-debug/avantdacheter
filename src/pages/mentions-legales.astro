@@ -1,0 +1,18 @@
+---
+import Page from '../layouts/Page.astro';
+import { LEGAL, SITE } from '../config';
+---
+<Page title="Mentions légales" description="Mentions légales du site Avant d'Acheter : éditeur, directeur de la publication, hébergeur." path="/mentions-legales/" h1="Mentions légales">
+  <h2>Éditeur du site</h2>
+  <p>{SITE.name} est édité par <strong>{LEGAL.editor}</strong>.<br />Adresse : {LEGAL.address}<br />SIREN : {LEGAL.siren}<br />TVA : {LEGAL.vat}<br />E-mail : <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a></p>
+  <h2>Directeur de la publication</h2>
+  <p>{LEGAL.publisher}</p>
+  <h2>Hébergeur</h2>
+  <p>{LEGAL.host}</p>
+  <h2>Affiliation</h2>
+  <p>Ce site participe au Programme Partenaires d'Amazon EU, un programme d'affiliation conçu pour permettre à des sites de percevoir une rémunération grâce à la création de liens vers Amazon.fr. En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises. Voir <a href="/notre-fonctionnement/">Notre fonctionnement</a>.</p>
+  <h2>Propriété intellectuelle</h2>
+  <p>Les textes et la structure du site sont protégés par le droit d'auteur. Les marques et noms de produits cités appartiennent à leurs propriétaires respectifs. Amazon et le logo Amazon sont des marques d'Amazon.com, Inc. ou de ses filiales ; ce site n'est pas Amazon.</p>
+  <h2>Responsabilité</h2>
+  <p>Les informations sont fournies à titre indicatif. Les caractéristiques, prix et disponibilités des produits sont ceux affichés par Amazon et peuvent changer : vérifiez-les avant tout achat. Pour les sujets liés à la sécurité (siège auto, chauffage, électricité…), référez-vous aux notices et normes en vigueur.</p>
+</Page>

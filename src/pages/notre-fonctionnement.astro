@@ -1,0 +1,26 @@
+---
+import Page from '../layouts/Page.astro';
+import { AMAZON } from '../config';
+---
+<Page title="Notre fonctionnement et transparence sur l'affiliation" description="Comment fonctionne Avant d'Acheter : des guides indépendants, des liens affiliés Amazon et une commission éventuelle, sans surcoût pour vous." path="/notre-fonctionnement/" h1="Notre fonctionnement">
+  <p>Avant d'Acheter publie des guides pratiques pour vous aider à comprendre ce dont vous avez réellement besoin <em>avant</em> d'acheter : quelle taille, quelle capacité, quelle puissance, quel budget, quels accessoires.</p>
+  <h2>Comment le site est financé</h2>
+  <p>Certains liens du site mènent vers Amazon.fr et sont des <strong>liens affiliés</strong> (Programme Partenaires Amazon, identifiant <code>{AMAZON.tag}</code>). Si vous achetez après avoir cliqué sur l'un de ces liens, une commission peut être versée au site. <strong>Cela n'entraîne aucun coût supplémentaire pour vous</strong> et le prix que vous payez est le même.</p>
+  <p>En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises.</p>
+  <h2>Notre indépendance</h2>
+  <ul>
+    <li>Avant d'Acheter n'est pas Amazon, n'appartient pas à Amazon et n'est pas affilié à Amazon au-delà du programme d'affiliation.</li>
+    <li>Nous ne forçons jamais un clic : les guides sont lisibles et utiles sans acheter.</li>
+    <li>Les blocs de produits suivent une logique d'usage (petit prix, capacité, confort, compacité…) et non un classement « meilleur produit ».</li>
+  </ul>
+  <h2>Ce que nous ne faisons pas</h2>
+  <ul>
+    <li>Nous ne prétendons pas avoir testé personnellement les produits que nous ne testons pas.</li>
+    <li>Nous n'inventons ni avis, ni notes, ni performances, ni promotions.</li>
+    <li>Nous n'affichons pas de prix présentés comme définitifs : les prix, promotions et disponibilités Amazon changent en permanence. Vérifiez-les toujours sur la fiche produit.</li>
+  </ul>
+  <h2>Les liens vers Amazon</h2>
+  <p>Selon les cas, un bouton « Voir sur Amazon » ouvre la fiche d'un produit précis ou une recherche Amazon.fr ciblée sur votre besoin. Dans les deux cas, le lien est signalé comme sponsorisé (<code>rel="sponsored"</code>).</p>
+  <h2>Une erreur dans un guide ?</h2>
+  <p>Écrivez-nous via la page <a href="/contact/">Contact</a> : nous corrigeons les informations inexactes.</p>
+</Page>

@@ -1,0 +1,22 @@
+---
+import Search from './Search.astro';
+import { SITE } from '../config';
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/categories/', label: 'Catégories' },
+  { href: '/guides/', label: 'Tous les guides' },
+  { href: '/notre-fonctionnement/', label: 'Notre fonctionnement' },
+];
+---
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="/" aria-label={`${SITE.name} — accueil`}>
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0f766e"/><path d="M18 34l9 9 19-22" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>{SITE.name}</span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      {nav.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
+    </nav>
+    <div class="header-search"><Search id="q-header" /></div>
+  </div>
+</header>

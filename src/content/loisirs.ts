@@ -1,0 +1,192 @@
+import type { RawGuide } from './types';
+
+const guides: RawGuide[] = [
+  // ───────────── VÉLO ─────────────
+  {
+    s: 'quelle-taille-de-velo-choisir', p: 'velo', t: 'taille',
+    h: 'Quelle taille de vélo choisir ?',
+    d: 'Taille de cadre, entrejambe, hauteur de selle : comment choisir la taille d’un vélo adulte avec un tableau de repères indicatifs.',
+    q: 'Le plus fiable est de partir de votre entrejambe et de votre taille, puis de comparer au tableau du fabricant. Les repères ci-dessous sont indicatifs : essayez le vélo ou vérifiez les retours.',
+    x: [
+      ['Mesurer son entrejambe', 'Debout, dos au mur, mesurez de l’entrejambe au sol sans chaussures. C’est la mesure la plus utile pour choisir un cadre.'],
+      ['Se référer au tableau du fabricant', 'Les tailles (S, M, L ou en centimètres) ne sont pas identiques d’une marque ou d’un type de vélo à l’autre.'],
+      ['Types de vélo', 'Le vélo de ville, le trekking, le VTT et le vélo de route n’ont pas la même géométrie : les tailles de cadre ne se comparent pas.'],
+      ['Réglages', 'La hauteur de selle et la potence permettent de corriger légèrement une taille limite.'],
+    ],
+    tb: [['Taille de l’utilisateur', 'Cadre ville / trekking (indicatif)', 'Remarque'], ['1,50 à 1,60 m', '46 à 48 cm', 'Selon l’entrejambe'], ['1,60 à 1,70 m', '50 à 52 cm', 'Selon l’entrejambe'], ['1,70 à 1,80 m', '54 à 56 cm', 'Selon l’entrejambe'], ['1,80 à 1,90 m', '58 à 60 cm', 'Selon l’entrejambe']],
+    pr: [['Pour un usage ville', 'Un vélo de ville dans la bonne taille.', 'vélo de ville'], ['Pour un usage mixte', 'Un vélo de trekking.', 'vélo trekking'], ['Pour un usage sportif', 'Un VTT.', 'VTT adulte']],
+    m: ['Choisir uniquement la taille « M » par défaut.', 'Ignorer l’entrejambe.'],
+    f: [['Que faire si je suis entre deux tailles ?', 'Selon vos préférences : plus petit pour la maniabilité, plus grand pour le confort en position allongée. Essayez si possible.']],
+    k: 'cadre entrejambe cycliste',
+  },
+  {
+    s: 'quelle-taille-de-casque-velo-choisir', p: 'velo', t: 'taille',
+    h: 'Quelle taille de casque de vélo choisir ?',
+    d: 'Mesurer son tour de tête, régler le casque, vérifier la norme : comment choisir la taille d’un casque de vélo.',
+    q: 'Mesurez votre tour de tête à environ 1 cm au-dessus des sourcils, puis comparez au tableau de la marque. Le casque doit tenir sans serrer et rester stable quand vous secouez la tête.',
+    x: [
+      ['Mesurer', 'Avec un mètre souple, faites le tour de la tête à environ 1 cm au-dessus des sourcils.'],
+      ['Tailles courantes', 'Souvent : S environ 51 à 55 cm, M environ 55 à 59 cm, L environ 59 à 63 cm. Les tableaux varient selon les marques.'],
+      ['Le bon réglage', 'Casque posé à plat sur le front, sangle sous le menton avec deux doigts de marge, languettes en V autour des oreilles.'],
+      ['La norme', 'Vérifiez le marquage conforme à la norme européenne pour les casques de vélo (EN 1078).'],
+    ],
+    tb: [['Taille', 'Tour de tête (indicatif)', 'Remarque'], ['S', '51 à 55 cm', 'Selon la marque'], ['M', '55 à 59 cm', 'Selon la marque'], ['L', '59 à 63 cm', 'Selon la marque']],
+    pr: [['Pour un usage ville', 'Un casque léger bien ventilé.', 'casque vélo adulte'], ['Pour la sécurité nocturne', 'Un casque avec éclairage intégré.', 'casque vélo feu arrière']],
+    m: ['Acheter un casque sans mesurer.', 'Utiliser un casque qui a subi un choc.'],
+    f: [['Quand remplacer un casque ?', 'Après un choc important, et selon les recommandations du fabricant.']],
+  },
+  {
+    s: 'que-verifier-avant-d-acheter-un-antivol-velo', p: 'velo', t: 'verifier',
+    h: 'Que vérifier avant d’acheter un antivol de vélo ?',
+    d: 'Type (U, chaîne, pliant, câble), niveau de sécurité, poids, certification : les points à vérifier avant d’acheter un antivol vélo.',
+    q: 'Un antivol en U ou une bonne chaîne protègent mieux qu’un simple câble. Choisissez selon la valeur du vélo et le lieu de stationnement, et vérifiez la certification et le poids.',
+    x: [
+      ['1. Le type', 'U : très résistant. Chaîne : flexible, plus lourde. Pliant : compact. Câble : léger, mais facile à couper.'],
+      ['2. Le niveau de sécurité', 'Plus le vélo est précieux et le lieu exposé, plus il faut un antivol résistant. Des labels de sécurité existent : consultez-les.'],
+      ['3. La longueur et le diamètre', 'Il doit passer par le cadre, une roue et un point fixe.'],
+      ['4. Le poids', 'Un antivol lourd est parfois laissé à la maison : cherchez le bon compromis.'],
+    ],
+    tb: [['Type', 'Points forts', 'Limites'], ['U', 'Très solide', 'Rigide'], ['Chaîne', 'Souple', 'Poids'], ['Pliant', 'Compact', 'Prix'], ['Câble', 'Léger', 'Facile à couper']],
+    pr: [['Pour privilégier la sécurité', 'Un antivol en U de bon niveau.', 'antivol vélo U haute sécurité'], ['Pour privilégier la compacité', 'Un antivol pliant.', 'antivol vélo pliant'], ['En complément', 'Un câble pour la roue.', 'antivol câble vélo']],
+    m: ['Choisir un câble pour un vélo coûteux.', 'Attacher seulement la roue.'],
+    f: [['Un seul antivol suffit-il ?', 'Deux antivols de types différents compliquent le vol.']],
+  },
+
+  // ───────────── TAPIS DE YOGA ─────────────
+  {
+    s: 'quelle-epaisseur-de-tapis-de-yoga-choisir', p: 'tapis-de-yoga', t: 'taille',
+    h: 'Quelle épaisseur de tapis de yoga choisir ?',
+    d: 'Entre 3 et 10 mm : quelle épaisseur de tapis de yoga choisir selon la pratique, les genoux et le transport ?',
+    q: 'Une épaisseur de 4 à 6 mm convient à la plupart des pratiques. 3 mm pour voyager, 8 à 10 mm si vous avez besoin de plus d’amorti (genoux, pilates), au prix de moins de stabilité debout.',
+    x: [
+      ['Fin (1 à 3 mm)', 'Très stable et léger, facile à emporter. Peu d’amorti.'],
+      ['Standard (4 à 6 mm)', 'Bon compromis entre amorti et stabilité pour le yoga, le stretching, le gainage.'],
+      ['Épais (8 mm et plus)', 'Confortable pour les genoux, le pilates ou le sol dur. Moins stable en équilibre.'],
+      ['Dimensions', 'Longueur standard d’environ 180 cm, largeur d’environ 60 cm. Plus long pour les grandes tailles.'],
+    ],
+    tb: [['Pratique', 'Épaisseur', 'Remarque'], ['Voyage', '1 à 3 mm', 'Léger'], ['Yoga courant', '4 à 6 mm', 'Polyvalent'], ['Pilates, genoux sensibles', '8 à 10 mm', 'Amorti']],
+    pr: [['Pour privilégier la stabilité', 'Un tapis 4 mm.', 'tapis de yoga 4 mm'], ['Pour privilégier l’amorti', 'Un tapis 8 mm.', 'tapis de yoga épais 8 mm'], ['Pour voyager', 'Un tapis pliable.', 'tapis de yoga voyage pliable']],
+    m: ['Choisir trop épais pour des postures d’équilibre.', 'Ignorer la longueur.'],
+    f: [['Quelle épaisseur pour débuter ?', '4 à 6 mm.']],
+  },
+  {
+    s: 'quelle-matiere-de-tapis-de-yoga-choisir', p: 'tapis-de-yoga', t: 'matiere',
+    h: 'Quelle matière de tapis de yoga choisir ?',
+    d: 'PVC, TPE, caoutchouc naturel, liège : avantages et limites de chaque matière de tapis de yoga (adhérence, poids, entretien).',
+    q: 'Le PVC est durable et adhérent, mais plus lourd. Le TPE est plus léger, le caoutchouc naturel très adhérent (attention au latex) et le liège agréable et antidérapant au contact de l’humidité.',
+    x: [
+      ['PVC', 'Durable, bonne adhérence, prix abordable. Lourd et peu écologique.'],
+      ['TPE', 'Léger, recyclable pour certains modèles, bonne adhérence. Moins durable que le PVC.'],
+      ['Caoutchouc naturel', 'Très adhérent. Odeur au début et risque pour les personnes allergiques au latex.'],
+      ['Liège', 'Antidérapant même avec les mains moites, naturel. Prix plus élevé.'],
+    ],
+    tb: [['Matière', 'Points forts', 'Limites'], ['PVC', 'Durable', 'Poids'], ['TPE', 'Léger', 'Durée de vie'], ['Caoutchouc', 'Adhérence', 'Latex'], ['Liège', 'Antidérapant', 'Prix']],
+    pr: [['Pour privilégier la durabilité', 'Un tapis en PVC.', 'tapis de yoga PVC'], ['Pour privilégier la légèreté', 'Un tapis en TPE.', 'tapis de yoga TPE'], ['Pour privilégier l’adhérence', 'Un tapis en caoutchouc ou liège.', 'tapis de yoga liège caoutchouc']],
+    m: ['Ignorer une allergie au latex.', 'Utiliser des produits agressifs pour nettoyer.'],
+    f: [['Comment nettoyer un tapis de yoga ?', 'Avec de l’eau et un savon doux, selon la notice.']],
+  },
+
+  // ───────────── FITNESS ─────────────
+  {
+    s: 'quel-poids-d-halteres-choisir', p: 'fitness', t: 'capacite',
+    h: 'Quel poids d’haltères choisir ?',
+    d: 'Haltères fixes ou ajustables : quel poids choisir pour débuter chez soi selon l’exercice et la progression ?',
+    q: 'Le poids dépend de l’exercice : plus léger pour les épaules et les bras, plus lourd pour les jambes et le dos. Des haltères ajustables évitent d’acheter plusieurs paires au fil de la progression.',
+    x: [
+      ['Selon le groupe musculaire', 'Les petits muscles (épaules, bras) se travaillent avec des charges plus légères que les grands muscles (jambes, dos).'],
+      ['Progresser', 'Au bout de quelques semaines, la charge de départ devient trop légère : prévoyez une marge.'],
+      ['Fixes ou ajustables', 'Les fixes sont pratiques mais encombrants à multiplier. Les ajustables permettent de changer de charge, avec un petit temps de réglage.'],
+      ['La technique d’abord', 'Commencez léger pour apprendre les mouvements ; si vous avez un doute, demandez conseil à un coach.'],
+    ],
+    tb: [['Besoin', 'Solution', 'Remarque'], ['Débuter', 'Haltères ajustables', 'Progression'], ['Place limitée', 'Haltères ajustables', 'Encombrement'], ['Séances rapides', 'Haltères fixes', 'Changement instantané']],
+    pr: [['Pour privilégier la progression', 'Des haltères ajustables.', 'haltères ajustables'], ['Pour privilégier la simplicité', 'Une paire d’haltères fixes.', 'haltères fixes paire'], ['Pour un petit budget', 'Des haltères en néoprène.', 'haltères néoprène']],
+    m: ['Acheter des charges trop lourdes au départ.', 'Négliger l’échauffement.'],
+    f: [['Quel poids pour débuter ?', 'Cela dépend de chaque personne ; commencez par une charge qui permet une exécution propre.']],
+  },
+  {
+    s: 'quelle-puissance-de-tapis-de-course-choisir', p: 'fitness', t: 'puissance',
+    h: 'Quelle puissance de tapis de course choisir ?',
+    d: 'Puissance du moteur, surface de course, poids maximal : comment choisir un tapis de course selon la marche ou la course.',
+    q: 'Pour marcher, un moteur de puissance continue modeste suffit. Pour courir régulièrement, il faut une puissance continue plus élevée, une surface de course plus longue et une structure robuste. La puissance « crête » ne compte pas.',
+    x: [
+      ['Puissance continue, pas puissance maximale', 'Seule la puissance continue (en CV ou en kW) reflète ce que le moteur tient en usage prolongé.'],
+      ['Repères d’usage', 'Marche : moteur modeste. Jogging : puissance continue plus élevée. Course intensive : moteur et structure plus robustes.'],
+      ['Surface de course', 'Plus on court vite, plus la surface doit être longue et large.'],
+      ['Poids et encombrement', 'Vérifiez le poids maximal supporté, le poids de l’appareil et la possibilité de le plier.'],
+    ],
+    tb: [['Usage', 'Puissance continue', 'Surface'], ['Marche', 'Modeste', 'Compacte'], ['Jogging', 'Moyenne', 'Plus longue'], ['Course régulière', 'Élevée', 'Grande']],
+    pr: [['Pour privilégier la marche', 'Un tapis de marche pliable.', 'tapis de marche pliable'], ['Pour privilégier le jogging', 'Un tapis de course.', 'tapis de course pliable'], ['Pour courir souvent', 'Un tapis robuste.', 'tapis de course puissant']],
+    m: ['Se fier à la puissance maximale.', 'Oublier l’espace et le bruit.'],
+    f: [['Faut-il un tapis incliné ?', 'Utile pour varier l’effort, mais pas indispensable.']],
+  },
+  {
+    s: 'velo-d-appartement-est-ce-utile', p: 'fitness', t: 'besoin',
+    h: 'Un vélo d’appartement est-il utile ?',
+    d: 'Vélo d’appartement : avantages, limites, cas où il est utile et alternatives pour faire du sport à la maison.',
+    q: 'Il est utile si vous voulez une activité régulière sans sortir, par tous les temps. Il est moins pertinent si vous préférez le plein air ou si vous manquez de place ou de motivation.',
+    x: [
+      ['Les avantages', 'Entraînement par tous les temps, impact articulaire plus doux que la course, possibilité de regarder un écran.'],
+      ['Les limites', 'Encombrement, monotonie, nécessité d’une régularité pour qu’il serve.'],
+      ['Alternatives', 'Marche, vélo en extérieur, vélo pliant, tapis de course.'],
+    ],
+    tb: [['Profil', 'Utile ?', 'Alternative'], ['Pratique régulière à domicile', 'Oui', '—'], ['Préférence plein air', 'Pas nécessaire', 'Vélo extérieur'], ['Petit espace', 'Selon le modèle', 'Pédalier compact']],
+    pr: [['Pour privilégier l’espace', 'Un vélo d’appartement pliable.', 'vélo d’appartement pliable'], ['Pour privilégier le confort', 'Un vélo à selle réglable.', 'vélo d’appartement magnétique']],
+    m: ['Acheter sans prévoir un créneau régulier.', 'Négliger la hauteur de selle.'],
+    f: [['Magnétique ou à friction ?', 'Le magnétique est plus silencieux et durable.']],
+  },
+
+  // ───────────── PÊCHE ─────────────
+  {
+    s: 'quelle-longueur-de-canne-a-peche-choisir', p: 'peche', t: 'taille',
+    h: 'Quelle longueur de canne à pêche choisir ?',
+    d: 'Pêche au lancer, au coup, à la carpe ou en mer : quelle longueur de canne choisir selon la technique et le lieu ?',
+    q: 'Cela dépend de la technique : environ 1,80 à 2,70 m pour le lancer léger, 3 à 3,90 m pour la carpe, plus pour la mer ou le coup. Choisissez d’abord la technique et le lieu.',
+    x: [
+      ['Selon la technique', 'Lancer léger en rivière et étang : cannes plutôt courtes et maniables. Carpe et mer : cannes plus longues pour lancer plus loin.'],
+      ['Selon le lieu', 'Berges encombrées ou petit cours d’eau : cannes courtes. Grand plan d’eau, bord de mer : cannes plus longues.'],
+      ['Action et puissance', 'La longueur n’est qu’un critère : l’action (souplesse) et la puissance de lancer comptent autant.'],
+      ['Règlement', 'Informez-vous sur la réglementation locale et la carte de pêche avant de partir.'],
+    ],
+    tb: [['Technique', 'Longueur indicative', 'Remarque'], ['Lancer léger', '1,80 à 2,70 m', 'Maniable'], ['Carpe', '3,60 m environ', 'Lancer long'], ['Mer', '3 à 4 m et plus', 'Selon la technique']],
+    pr: [['Pour débuter', 'Une canne télescopique polyvalente.', 'canne à pêche télescopique débutant'], ['Pour le lancer', 'Une canne lancer 2,40 m.', 'canne lancer 2,40 m'], ['Pour la carpe', 'Une canne carpe 3,60 m.', 'canne carpe 3,60']],
+    m: ['Choisir la canne avant la technique.', 'Oublier le moulinet assorti.'],
+    f: [['Canne télescopique ou en plusieurs brins ?', 'La télescopique est compacte ; les brins sont souvent plus sensibles.']],
+  },
+
+  // ───────────── RANDONNÉE ─────────────
+  {
+    s: 'baton-de-randonnee-est-ce-utile', p: 'randonnee', t: 'besoin',
+    h: 'Les bâtons de randonnée sont-ils utiles ?',
+    d: 'Bâtons de randonnée : avantages, limites, cas où ils sont utiles (descentes, charges lourdes) et réglage.',
+    q: 'Oui en terrain pentu, avec un sac lourd ou pour soulager les genoux en descente. Sur terrain plat et sentiers faciles, ils sont facultatifs.',
+    x: [
+      ['Les avantages', 'Équilibre, soulagement des articulations en descente, aide à la montée.'],
+      ['Les limites', 'Il faut apprendre à les utiliser et ils occupent les mains.'],
+      ['Le bon réglage', 'Coude à environ 90° sur terrain plat, plus court en montée, plus long en descente.'],
+      ['Matière', 'L’aluminium est robuste et abordable, le carbone plus léger mais plus cher et plus fragile aux chocs.'],
+    ],
+    tb: [['Situation', 'Utiles ?', 'Remarque'], ['Terrain plat', 'Pas nécessaires', '—'], ['Dénivelé important', 'Oui', 'Réglage variable'], ['Sac lourd', 'Oui', 'Soulage les jambes']],
+    pr: [['Pour privilégier le budget', 'Des bâtons en aluminium.', 'bâtons de randonnée aluminium'], ['Pour privilégier la légèreté', 'Des bâtons en carbone.', 'bâtons de randonnée carbone pliables']],
+    m: ['Les régler trop courts.', 'Ne pas utiliser les dragonnes correctement.'],
+    f: [['Un ou deux bâtons ?', 'Deux bâtons répartissent mieux l’effort.']],
+  },
+  {
+    s: 'que-verifier-avant-d-acheter-des-chaussures-de-randonnee', p: 'randonnee', t: 'verifier',
+    h: 'Que vérifier avant d’acheter des chaussures de randonnée ?',
+    d: 'Pointure, tige, semelle, imperméabilité, essayage : les points à vérifier avant d’acheter des chaussures de randonnée.',
+    q: 'Essayez-les en fin de journée avec vos chaussettes de marche, vérifiez que vos orteils ne touchent pas l’avant en descente, et choisissez la tige et la semelle selon le terrain.',
+    x: [
+      ['1. La pointure', 'Prévoyez environ 0,5 à 1 cm de marge à l’avant. Les pieds gonflent à l’effort.'],
+      ['2. La tige', 'Basse : légère, pour sentiers faciles. Mi-haute : maintien de la cheville. Haute : terrain accidenté ou charge lourde.'],
+      ['3. La semelle', 'Une semelle crantée accroche sur terrain humide ; un renfort protège des cailloux.'],
+      ['4. L’imperméabilité', 'Une membrane protège de l’eau mais respire moins : à choisir selon le climat.'],
+      ['5. Le rodage', 'Portez-les quelques fois avant un grand départ.'],
+    ],
+    tb: [['Terrain', 'Tige', 'Priorité'], ['Sentiers faciles', 'Basse', 'Légèreté'], ['Moyenne montagne', 'Mi-haute', 'Maintien'], ['Terrain accidenté', 'Haute', 'Protection']],
+    pr: [['Pour privilégier la légèreté', 'Des chaussures basses.', 'chaussures de randonnée basses'], ['Pour privilégier le maintien', 'Des chaussures mi-hautes.', 'chaussures de randonnée mi-hautes imperméables']],
+    m: ['Acheter sa pointure habituelle sans marge.', 'Partir en randonnée avec des chaussures neuves.'],
+    f: [['Imperméable ou respirante ?', 'Imperméable en climat humide, respirante en été chaud.']],
+  },
+];
+
+export default guides;

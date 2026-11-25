@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import Search from '../components/Search.astro';
+---
+<Base title="Recherche" description="Recherchez un produit, une question d'achat ou une caractéristique dans les guides d'Avant d'Acheter." path="/recherche/" noindex>
+  <div class="wrap read article">
+    <h1>Recherche</h1>
+    <Search id="q-page" big label="Que voulez-vous acheter ?" />
+    <div id="search-results" aria-live="polite"></div>
+    <noscript><p>La recherche nécessite JavaScript. Vous pouvez parcourir <a href="/guides/">tous les guides</a> ou <a href="/categories/">les catégories</a>.</p></noscript>
+  </div>
+</Base>

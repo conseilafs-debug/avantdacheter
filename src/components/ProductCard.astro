@@ -1,0 +1,24 @@
+---
+import type { Product } from '../data/products';
+import { amazonProductUrl } from '../lib/affiliate';
+import AffiliateButton from './AffiliateButton.astro';
+interface Props { product: Product; }
+const { product } = Astro.props;
+const url = amazonProductUrl(product.asin);
+---
+{url && (
+  <article class="product">
+    {product.image && <img src={product.image} alt={product.imageAlt ?? product.name} loading="lazy" width="120" height="120" />}
+    <div>
+      <h4>{product.name}</h4>
+      <p><strong>Pour qui :</strong> {product.forWho}</p>
+      <p><strong>Point fort :</strong> {product.strength}</p>
+      {product.limit && <p><strong>Limite :</strong> {product.limit}</p>}
+      {product.features && product.features.length > 0 && (
+        <ul>{product.features.map((f) => <li>{f}</li>)}</ul>
+      )}
+      <AffiliateButton url={url} name={product.name} />
+      <p class="note">Prix et disponibilité : à vérifier sur Amazon.fr.</p>
+    </div>
+  </article>
+)}

@@ -1,0 +1,9 @@
+---
+import Page from '../layouts/Page.astro';
+import { LEGAL } from '../config';
+---
+<Page title="Contact" description="Contactez l'équipe d'Avant d'Acheter pour signaler une erreur, poser une question ou proposer un sujet de guide." path="/contact/" h1="Contact">
+  <p>Une erreur dans un guide, une question, un sujet à traiter ? Écrivez-nous :</p>
+  <p><a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a></p>
+  <p>Nous ne pouvons pas répondre aux questions sur une commande Amazon, un remboursement ou un suivi de colis : ces demandes relèvent du service client d'Amazon. Nous ne vendons aucun produit.</p>
+</Page>

@@ -1,0 +1,28 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import GuideCard from '../../../components/GuideCard.astro';
+import { clustersWithGuides, guidesOfCluster } from '../../../lib/guides';
+import { CATS } from '../../../data/taxonomy';
+import { breadcrumbLd } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return clustersWithGuides().map((c) => ({ params: { cat: c.cat, cluster: c.slug }, props: { cluster: c } }));
+}
+const { cluster } = Astro.props;
+const cat = CATS.find((c) => c.slug === cluster.cat)!;
+const guides = guidesOfCluster(cluster.slug);
+const url = `/${cat.slug}/${cluster.slug}/`;
+const crumbs = [{ name: 'Accueil', url: '/' }, { name: cat.name, url: `/${cat.slug}/` }, { name: cluster.name, url }];
+const title = `${cluster.name} : guides pour bien choisir`;
+const desc = `${cluster.desc} ${guides.length} guide${guides.length > 1 ? 's' : ''} pratique${guides.length > 1 ? 's' : ''} pour comprendre votre besoin avant d'acheter.`;
+---
+<Base title={title} description={desc} path={url} jsonLd={[breadcrumbLd(Astro.site, crumbs), { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description: desc, url: Astro.site ? new URL(url, Astro.site).toString() : url }]}>
+  <div class="wrap article">
+    <Breadcrumb items={crumbs} />
+    <h1>{cluster.name} : les guides pour bien choisir</h1>
+    <p class="lead">{cluster.desc} Chaque guide répond à une question d'achat précise, avant toute recommandation de produit.</p>
+    <div class="grid grid-2">{guides.map((g) => <GuideCard guide={g} />)}</div>
+    <p><a href={`/${cat.slug}/`}>← Tous les guides {cat.name}</a></p>
+  </div>
+</Base>

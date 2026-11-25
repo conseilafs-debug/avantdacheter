@@ -1,0 +1,19 @@
+---
+import Page from '../layouts/Page.astro';
+import { LEGAL } from '../config';
+---
+<Page title="Politique de confidentialité" description="Données personnelles : ce que collecte (et ne collecte pas) Avant d'Acheter, vos droits RGPD et le rôle d'Amazon lors d'un clic sur un lien affilié." path="/politique-de-confidentialite/" h1="Politique de confidentialité">
+  <p>Dernière mise à jour : 25 novembre 2026.</p>
+  <h2>Responsable du traitement</h2>
+  <p>{LEGAL.editor} — {LEGAL.address} — <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>.</p>
+  <h2>Données que nous collectons</h2>
+  <p>Le site ne propose ni compte utilisateur, ni formulaire, ni newsletter. Il ne dépose aucun cookie publicitaire ni outil de mesure d'audience tiers. Si vous nous écrivez par e-mail, nous utilisons votre adresse et votre message uniquement pour vous répondre.</p>
+  <p>Comme tout site web, l'hébergeur (Cloudflare) traite des données techniques (adresse IP, journaux de connexion) nécessaires à la diffusion et à la sécurité du site.</p>
+  <h2>Recherche interne</h2>
+  <p>La recherche s'exécute dans votre navigateur sur un index public : vos requêtes ne sont pas envoyées à un serveur ni enregistrées.</p>
+  <h2>Liens vers Amazon</h2>
+  <p>Lorsque vous cliquez sur un lien affilié, vous quittez notre site pour Amazon.fr, qui applique sa propre politique de confidentialité et ses propres cookies. Amazon nous indique uniquement les achats éligibles à une commission, sans nous transmettre votre identité.</p>
+  <h2>Vos droits</h2>
+  <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de limitation. Écrivez à <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>. Vous pouvez aussi saisir la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
+  <p>Si des outils de mesure d'audience ou de publicité sont ajoutés à l'avenir, cette politique sera mise à jour et votre consentement sera recueilli au préalable.</p>
+</Page>

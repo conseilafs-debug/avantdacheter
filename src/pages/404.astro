@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import Search from '../components/Search.astro';
+---
+<Base title="Page introuvable" description="Cette page n'existe pas ou a été déplacée." path="/404/" noindex>
+  <div class="wrap read article">
+    <h1>Page introuvable</h1>
+    <p>Cette page n'existe pas ou a été déplacée. Essayez la recherche :</p>
+    <Search id="q-404" big label="Que voulez-vous acheter ?" />
+    <p><a href="/">Retour à l'accueil</a> · <a href="/guides/">Tous les guides</a></p>
+  </div>
+</Base>

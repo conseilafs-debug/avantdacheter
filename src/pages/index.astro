@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Search from '../components/Search.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import GuideCard from '../components/GuideCard.astro';
+import DisclosureAffiliate from '../components/DisclosureAffiliate.astro';
+import { CATS, TYPES } from '../data/taxonomy';
+import { GUIDES, guidesOfCat } from '../lib/guides';
+import { SITE } from '../config';
+import { abs } from '../lib/seo';
+
+const chips = [['tente', 'tente'], ['aspirateur', 'aspirateur'], ['valise', 'valise'], ['machine à café', 'machine cafe'], ['chaise de bureau', 'chaise bureau'], ['arbre à chat', 'arbre chat']];
+const quick = ['taille', 'capacite', 'puissance', 'budget', 'verifier', 'besoin', 'usage', 'accessoires'].map((k) => TYPES.find((t) => t.key === k)!);
+const featured = ['quelle-taille-de-tente-pour-4-personnes', 'quelle-taille-de-valise-pour-une-semaine', 'quelle-capacite-de-friteuse-a-air-pour-4-personnes', 'quelle-puissance-pour-un-aspirateur', 'quelle-chaise-de-bureau-pour-teletravailler', 'quelle-taille-d-arbre-a-chat-choisir']
+  .map((s) => GUIDES.find((g) => g.slug === s)).filter(Boolean) as typeof GUIDES;
+const title = 'Avant d’acheter : les guides pour bien choisir';
+const description = 'Taille, capacité, puissance, budget, erreurs à éviter : comprenez ce dont vous avez vraiment besoin avant d’acheter, puis découvrez quelques produits adaptés.';
+const ld = [{
+  '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: abs(Astro.site, '/'), inLanguage: 'fr-FR', description,
+  potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: abs(Astro.site, '/recherche/?q={search_term_string}') }, 'query-input': 'required name=search_term_string' },
+}];
+---
+<Base title={title} description={description} path="/" jsonLd={ld}>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Avant d’acheter : les guides pour bien choisir</h1>
+      <p class="lead">Vous hésitez avant d’acheter un produit ? Découvrez les critères à vérifier, les dimensions à choisir, les capacités adaptées à votre usage et les erreurs à éviter avant de commander.</p>
+      <Search id="q-home" big label="Que voulez-vous acheter ?" placeholder="Ex. : tente, aspirateur, valise…" />
+      <ul class="chips" aria-label="Recherches fréquentes">
+        {chips.map(([l, q]) => <li><a href={`/recherche/?q=${encodeURIComponent(q)}`}>{l}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="block" aria-labelledby="acces">
+      <h2 id="acces">Accès rapide : quelle est votre question ?</h2>
+      <div class="grid grid-3">
+        {quick.map((t) => (
+          <a class="card" href={`/conseils/${t.slug}/`}>
+            <span class="card-title">{t.title}</span>
+            <span class="card-text">{t.blurb}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="cats">
+      <div class="sec-head"><h2 id="cats">Catégories populaires</h2><a href="/categories/">Toutes les catégories →</a></div>
+      <div class="grid grid-3">{CATS.map((c) => <CategoryCard cat={c} count={guidesOfCat(c.slug).length} />)}</div>
+    </section>
+
+    <section class="block" aria-labelledby="une">
+      <div class="sec-head"><h2 id="une">Guides à la une</h2><a href="/guides/">Tous les guides ({GUIDES.length}) →</a></div>
+      <div class="grid grid-2">{featured.map((g) => <GuideCard guide={g} />)}</div>
+    </section>
+
+    <section class="block" aria-labelledby="methode">
+      <h2 id="methode">Notre approche : comprendre avant de choisir</h2>
+      <ol class="steps">
+        <li><strong>Une question réelle</strong><br />Chaque guide part d’une vraie question d’achat : quelle taille, quelle capacité, quel budget ?</li>
+        <li><strong>Les critères qui comptent</strong><br />Nous expliquons comment déterminer votre besoin, sans jargon ni classement imposé.</li>
+        <li><strong>Des pistes, pas un catalogue</strong><br />Ensuite seulement, quelques recherches Amazon adaptées à votre profil. Aucun clic forcé.</li>
+      </ol>
+    </section>
+    <DisclosureAffiliate />
+  </div>
+</Base>

@@ -1,0 +1,10 @@
+---
+import type { Guide } from '../lib/guides';
+interface Props { guide: Guide; }
+const { guide } = Astro.props;
+---
+<a class="card guide-card" href={guide.url}>
+  <span class="tag">{guide.type.label}</span>
+  <span class="card-title">{guide.title}</span>
+  <span class="card-meta">{guide.cat.short} · {guide.cluster.name}</span>
+</a>

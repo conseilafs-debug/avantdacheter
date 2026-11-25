@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import { CATS } from '../data/taxonomy';
+import { guidesOfCat, clustersOfCat } from '../lib/guides';
+import { breadcrumbLd } from '../lib/seo';
+const crumbs = [{ name: 'Accueil', url: '/' }, { name: 'Toutes les catégories', url: '/categories/' }];
+---
+<Base title="Toutes les catégories de guides d'achat" description="Maison, animaux, camping, voyage, informatique, sport, famille : parcourez toutes les catégories de guides pour bien choisir avant d'acheter." path="/categories/" jsonLd={[breadcrumbLd(Astro.site, crumbs)]}>
+  <div class="wrap article">
+    <Breadcrumb items={crumbs} />
+    <h1>Toutes les catégories</h1>
+    <div class="grid grid-2">{CATS.map((c) => <CategoryCard cat={c} count={guidesOfCat(c.slug).length} />)}</div>
+    {CATS.map((c) => (
+      <section class="block">
+        <h2><a href={`/${c.slug}/`}>{c.name}</a></h2>
+        <ul class="pill-list">{clustersOfCat(c.slug).map((cl) => <li><a href={`/${c.slug}/${cl.slug}/`}>{cl.name}</a></li>)}</ul>
+      </section>
+    ))}
+  </div>
+</Base>

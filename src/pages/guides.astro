@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { CATS, TYPES } from '../data/taxonomy';
+import { GUIDES, guidesOfCat } from '../lib/guides';
+import { breadcrumbLd } from '../lib/seo';
+const crumbs = [{ name: 'Accueil', url: '/' }, { name: 'Tous les guides', url: '/guides/' }];
+---
+<Base title="Tous les guides : taille, capacité, puissance, budget" description={`Les ${GUIDES.length} guides d'Avant d'Acheter : quelle taille, quelle capacité, quelle puissance, quel budget, que vérifier avant d'acheter.`} path="/guides/" jsonLd={[breadcrumbLd(Astro.site, crumbs)]}>
+  <div class="wrap article">
+    <Breadcrumb items={crumbs} />
+    <h1>Tous les guides ({GUIDES.length})</h1>
+    <p class="lead">Parcourez par type de question :</p>
+    <ul class="pill-list">{TYPES.map((t) => <li><a href={`/conseils/${t.slug}/`}>{t.title}</a></li>)}</ul>
+    {CATS.map((c) => (
+      <section class="block">
+        <h2><a href={`/${c.slug}/`}>{c.name}</a></h2>
+        <ul>{guidesOfCat(c.slug).map((g) => <li><a href={g.url}>{g.title}</a></li>)}</ul>
+      </section>
+    ))}
+  </div>
+</Base>

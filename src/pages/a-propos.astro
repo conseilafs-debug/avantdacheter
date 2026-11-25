@@ -1,0 +1,16 @@
+---
+import Page from '../layouts/Page.astro';
+import { SITE } from '../config';
+---
+<Page title="À propos d'Avant d'Acheter" description="Avant d'Acheter aide à déterminer le bon besoin (taille, capacité, puissance, budget) avant d'acheter un produit." path="/a-propos/" h1="À propos">
+  <p><strong>{SITE.name}</strong> — {SITE.slogan}.</p>
+  <p>Beaucoup de sites répondent à « quel est le meilleur produit ? ». Nous préférons répondre d'abord à la question qui précède : <em>de quoi ai-je réellement besoin ?</em> Une tente trop petite, une batterie externe sous-dimensionnée, un aspirateur inadapté aux poils d'animaux : la plupart des mauvais achats viennent d'un besoin mal identifié, pas d'une mauvaise marque.</p>
+  <h2>Notre méthode</h2>
+  <ol>
+    <li>Partir d'une question d'achat concrète.</li>
+    <li>Expliquer les critères qui comptent (dimensions, capacité, puissance, matière, budget).</li>
+    <li>Présenter des profils d'utilisateurs plutôt qu'un classement.</li>
+    <li>Proposer, en conséquence naturelle du guide, des pistes de produits sur Amazon.fr.</li>
+  </ol>
+  <p>Le site est financé par l'affiliation : voir <a href="/notre-fonctionnement/">Notre fonctionnement</a>. Les guides reposent sur des règles de bon sens et des repères courants ; ils ne remplacent pas la fiche technique du produit ni l'avis d'un professionnel (santé, sécurité, installation).</p>
+</Page>

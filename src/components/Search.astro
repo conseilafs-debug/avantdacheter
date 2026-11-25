@@ -1,0 +1,12 @@
+---
+interface Props { id?: string; placeholder?: string; big?: boolean; label?: string; }
+const { id = 'q', placeholder = 'Ex. : tente, aspirateur, valise…', big = false, label = 'Rechercher un guide' } = Astro.props;
+---
+<form class={`search ${big ? 'search-big' : ''}`} role="search" action="/recherche/" method="get" data-search>
+  <label for={id} class={big ? 'search-label' : 'sr-only'}>{label}</label>
+  <div class="search-row">
+    <input id={id} name="q" type="search" placeholder={placeholder} autocomplete="off" enterkeyhint="search" aria-autocomplete="list" aria-controls={`${id}-list`} />
+    <button type="submit" aria-label="Lancer la recherche">Rechercher</button>
+  </div>
+  <ul class="search-suggest" id={`${id}-list`} role="listbox" hidden></ul>
+</form>

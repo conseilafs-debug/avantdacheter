@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import GuideCard from '../../components/GuideCard.astro';
+import { TYPES } from '../../data/taxonomy';
+import { guidesOfType } from '../../lib/guides';
+import { breadcrumbLd } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return TYPES.filter((t) => guidesOfType(t.key).length > 0).map((t) => ({ params: { type: t.slug }, props: { type: t } }));
+}
+const { type } = Astro.props;
+const guides = guidesOfType(type.key);
+const url = `/conseils/${type.slug}/`;
+const crumbs = [{ name: 'Accueil', url: '/' }, { name: 'Conseils', url: '/guides/' }, { name: type.title, url }];
+---
+<Base title={`${type.title} : tous nos guides`} description={`${type.blurb} ${guides.length} guides pour identifier votre besoin avant d'acheter.`} path={url} jsonLd={[breadcrumbLd(Astro.site, crumbs)]}>
+  <div class="wrap article">
+    <Breadcrumb items={crumbs} />
+    <h1>{type.title}</h1>
+    <p class="lead">{type.blurb}</p>
+    <div class="grid grid-2">{guides.map((g) => <GuideCard guide={g} />)}</div>
+  </div>
+</Base>

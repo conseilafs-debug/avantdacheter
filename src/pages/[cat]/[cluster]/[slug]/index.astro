@@ -1,0 +1,133 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import DisclosureAffiliate from '../../../../components/DisclosureAffiliate.astro';
+import AffiliateButton from '../../../../components/AffiliateButton.astro';
+import ProductCard from '../../../../components/ProductCard.astro';
+import FAQ from '../../../../components/FAQ.astro';
+import RelatedArticles from '../../../../components/RelatedArticles.astro';
+import { GUIDES, related, guidesOfCluster } from '../../../../lib/guides';
+import { amazonSearchUrl } from '../../../../lib/affiliate';
+import { breadcrumbLd, abs, publisherLd } from '../../../../lib/seo';
+import { SITE } from '../../../../config';
+
+export function getStaticPaths() {
+  return GUIDES.map((g) => ({ params: { cat: g.cat.slug, cluster: g.cluster.slug, slug: g.slug }, props: { guide: g } }));
+}
+const { guide: g } = Astro.props;
+const crumbs = [
+  { name: 'Accueil', url: '/' },
+  { name: g.cat.name, url: `/${g.cat.slug}/` },
+  { name: g.cluster.name, url: `/${g.cat.slug}/${g.cluster.slug}/` },
+  { name: g.title, url: g.url },
+];
+const siblings = guidesOfCluster(g.cluster.slug).filter((x) => x !== g);
+const hasProfiles = g.profiles.length > 0;
+const ld = [
+  breadcrumbLd(Astro.site, crumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: g.title,
+    description: g.description,
+    datePublished: SITE.updated,
+    dateModified: SITE.updated,
+    inLanguage: 'fr-FR',
+    mainEntityOfPage: abs(Astro.site, g.url),
+    author: { '@type': 'Organization', name: SITE.name, url: abs(Astro.site, '/') },
+    publisher: publisherLd(Astro.site),
+  },
+  g.faq.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: g.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      }
+    : null,
+].filter(Boolean) as object[];
+---
+<Base title={g.title} description={g.description} path={g.url} type="article" jsonLd={ld}>
+  <div class="wrap read article">
+    <Breadcrumb items={crumbs} />
+    <h1>{g.title}</h1>
+    <p class="meta-line">{g.cat.name} · {g.cluster.name} · Guide « {g.type.label.toLowerCase()} » · Mis à jour le 25 novembre 2026</p>
+    {hasProfiles && <DisclosureAffiliate compact />}
+
+    <section class="quick" aria-labelledby="quick-title">
+      <h2 id="quick-title">Réponse rapide</h2>
+      <p>{g.quick}</p>
+    </section>
+
+    {g.sections.length > 2 && (
+      <nav class="toc" aria-label="Sommaire">
+        <strong>Dans ce guide</strong>
+        <ol>
+          {g.sections.map((s, i) => <li><a href={`#s${i + 1}`}>{s.h}</a></li>)}
+          {g.table && <li><a href="#recap">Tableau récapitulatif</a></li>}
+          {hasProfiles && <li><a href="#produits">Produits selon votre besoin</a></li>}
+          <li><a href="#erreurs">Erreurs à éviter</a></li>
+        </ol>
+      </nav>
+    )}
+
+    {g.sections.map((s, i) => (
+      <section id={`s${i + 1}`}>
+        <h2>{s.h}</h2>
+        {s.p.map((p) => <p>{p}</p>)}
+      </section>
+    ))}
+
+    {g.table && (
+      <section id="recap">
+        <h2>Tableau récapitulatif</h2>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Tableau récapitulatif, défilement horizontal possible">
+          <table>
+            <thead><tr>{g.table[0].map((h) => <th scope="col">{h}</th>)}</tr></thead>
+            <tbody>
+              {g.table.slice(1).map((row) => (
+                <tr>{row.map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>))}</tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    {hasProfiles && (
+      <section id="produits" class="picks">
+        <h2>Produits Amazon selon votre besoin</h2>
+        <p class="note">Chaque bloc correspond à un profil d'usage, pas à un classement. Les boutons ouvrent Amazon.fr (lien affilié) : les modèles proposés, leurs prix et leur disponibilité évoluent, et nous ne les avons pas testés personnellement. Comparez les caractéristiques avec les critères ci-dessus avant de commander.</p>
+        {g.profiles.map((p) => (
+          <div class="pick">
+            <h3>{p.label}</h3>
+            <p>{p.text}</p>
+            {p.products.map((pr) => <ProductCard product={pr} />)}
+            <AffiliateButton url={amazonSearchUrl(p.query)} name={p.query} label={p.products.length ? 'Voir d’autres modèles sur Amazon' : 'Voir les modèles sur Amazon'} />
+          </div>
+        ))}
+      </section>
+    )}
+
+    <section class="checklist" aria-labelledby="avant-cmd">
+      <h3 id="avant-cmd">Avant de commander</h3>
+      <ul>
+        <li>Comparez les dimensions et caractéristiques de la fiche avec vos mesures et votre usage.</li>
+        <li>Lisez les avis récents et les plus critiques : ils révèlent les défauts concrets.</li>
+        <li>Vérifiez le prix du jour, les frais éventuels et la politique de retour du vendeur.</li>
+      </ul>
+    </section>
+
+    <section id="erreurs">
+      <h2>Erreurs à éviter</h2>
+      <ul class="mistakes">{g.mistakes.map((m) => <li>{m}</li>)}</ul>
+    </section>
+
+    <FAQ items={g.faq} />
+
+    {siblings.length > 0 && (
+      <p>Tous nos guides sur ce sujet : <a href={`/${g.cat.slug}/${g.cluster.slug}/`}>{g.cluster.name}</a>. Plus de conseils « {g.type.label.toLowerCase()} » : <a href={`/conseils/${g.type.slug}/`}>{g.type.title}</a></p>
+    )}
+    <RelatedArticles guides={related(g, 4)} />
+    {hasProfiles && <DisclosureAffiliate />}
+  </div>
+</Base>

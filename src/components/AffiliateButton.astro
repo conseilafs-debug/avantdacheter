@@ -1,0 +1,9 @@
+---
+import { withTag } from '../lib/affiliate';
+interface Props { url: string; name: string; label?: string; }
+const { url, name, label = 'Voir sur Amazon' } = Astro.props;
+const href = withTag(url);
+---
+<a class="btn-amz" href={href} target="_blank" rel="sponsored nofollow noopener" aria-label={`${label} : ${name} (lien affilié, nouvel onglet)`}>
+  {label} <span aria-hidden="true">→</span>
+</a>

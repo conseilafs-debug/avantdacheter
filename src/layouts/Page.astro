@@ -1,0 +1,15 @@
+---
+import Base from './Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { breadcrumbLd } from '../lib/seo';
+interface Props { title: string; description: string; path: string; h1?: string; }
+const { title, description, path, h1 = title } = Astro.props;
+const crumbs = [{ name: 'Accueil', url: '/' }, { name: h1, url: path }];
+---
+<Base title={title} description={description} path={path} jsonLd={[breadcrumbLd(Astro.site, crumbs)]}>
+  <div class="wrap read article">
+    <Breadcrumb items={crumbs} />
+    <h1>{h1}</h1>
+    <slot />
+  </div>
+</Base>

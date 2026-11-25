@@ -1,0 +1,14 @@
+---
+import GuideCard from './GuideCard.astro';
+import type { Guide } from '../lib/guides';
+interface Props { guides: Guide[]; title?: string; }
+const { guides, title = 'Articles associés' } = Astro.props;
+---
+{guides.length > 0 && (
+  <section class="related" aria-labelledby="related-title">
+    <h2 id="related-title">{title}</h2>
+    <div class="grid grid-2">
+      {guides.map((g) => <GuideCard guide={g} />)}
+    </div>
+  </section>
+)}

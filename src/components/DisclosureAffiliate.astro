@@ -1,0 +1,11 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+{compact ? (
+  <p class="disclosure"><strong>Transparence :</strong> cette page contient des liens affiliés Amazon. Si vous achetez via ces liens, le site peut percevoir une commission, sans surcoût pour vous. <a href="/notre-fonctionnement/">En savoir plus</a>.</p>
+) : (
+  <aside class="disclosure" aria-label="Information sur l'affiliation">
+    <p><strong>Transparence.</strong> Avant d'Acheter est un site de guides indépendant, sans lien avec Amazon. Certains liens vers Amazon.fr sont des liens affiliés : si vous achetez après avoir cliqué, nous pouvons percevoir une commission, sans aucun coût supplémentaire pour vous. Les prix, la disponibilité et les caractéristiques peuvent évoluer : vérifiez-les sur la fiche Amazon avant de commander. <a href="/notre-fonctionnement/">Notre fonctionnement</a>.</p>
+  </aside>
+)}
