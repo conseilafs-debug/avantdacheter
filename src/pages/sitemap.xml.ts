@@ -4,7 +4,7 @@ import { GUIDES, clustersWithGuides } from '../lib/guides';
 import { SITE } from '../config';
 
 export const GET: APIRoute = ({ site }) => {
-  const base = (site ?? new URL('https://avant-dacheter.pages.dev')).toString().replace(/\/$/, '');
+  const base = (site ?? new URL('https://avantdacheter.pages.dev')).toString().replace(/\/$/, '');
   const d = SITE.updated;
   const urls: [string, string, string][] = [
     ['/', '1.0', 'weekly'],

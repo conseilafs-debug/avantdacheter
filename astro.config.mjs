@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 
 // URL publique du site. À définir dans Cloudflare Pages (variable SITE_URL)
 // quand le nom de domaine personnalisé sera branché.
-const site = process.env.SITE_URL || 'https://avant-dacheter.pages.dev';
+const site = process.env.SITE_URL || 'https://avantdacheter.pages.dev';
 
 export default defineConfig({
   site,

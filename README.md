@@ -15,7 +15,7 @@ npm run check:links    # contrôle liens internes, tag Amazon, titres/h1/meta un
 1. Poussez ce dossier sur un dépôt GitHub.
 2. Cloudflare → Workers & Pages → Create → Pages → Connect to Git → choisir le dépôt.
 3. Build command : `npm run build` — Output directory : `dist` — Variable `NODE_VERSION=22`.
-4. Nommez le projet `avant-dacheter` → URL `https://avant-dacheter.pages.dev`.
+4. Le projet est publié sur `https://avantdacheter.pages.dev` (adresse par défaut du code).
    Si le nom diffère, ajoutez la variable `SITE_URL=https://votre-projet.pages.dev` (canonical, sitemap, Open Graph), puis relancez le build.
 
 ## Structure

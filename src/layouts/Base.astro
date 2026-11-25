@@ -13,7 +13,7 @@ interface Props {
   jsonLd?: object[];
 }
 const { title, description, path = Astro.url.pathname, type = 'website', noindex = false, jsonLd = [] } = Astro.props;
-const site = (Astro.site ?? new URL('https://avant-dacheter.pages.dev')).toString().replace(/\/$/, '');
+const site = (Astro.site ?? new URL('https://avantdacheter.pages.dev')).toString().replace(/\/$/, '');
 const canonical = site + path;
 const fullTitle = title.includes(SITE.name) || title.length > 46 ? title : `${title} | ${SITE.name}`;
 const og = `${site}/og.png`;

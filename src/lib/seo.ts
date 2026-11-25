@@ -1,7 +1,7 @@
 import { SITE } from '../config';
 
 export const abs = (site: URL | undefined, path: string) =>
-  (site ?? new URL('https://avant-dacheter.pages.dev')).toString().replace(/\/$/, '') + path;
+  (site ?? new URL('https://avantdacheter.pages.dev')).toString().replace(/\/$/, '') + path;
 
 export function breadcrumbLd(site: URL | undefined, items: { name: string; url: string }[]) {
   return {
